@@ -25,11 +25,8 @@ test.db
 # Docker
 postgres_data/
 
-# Answer key (interviewer only)
+# Answer key (interviewer only – keep out of candidate submissions)
 docs/ANSWER_KEY.md
-
 # OS
 .DS_Store
 Thumbs.db
-
-docs/
