@@ -1,4 +1,4 @@
-﻿# Assessment Review — Full-Stack Engineering & QA
+# Assessment Review — Full-Stack Engineering & QA
 
 > **Candidate**: Assessment Submission  
 > **Date**: 2026-09-17  
@@ -54,7 +54,7 @@ main
 
 ### 2A. Backend Pytest Tests
 
-**File**: [`backend/tests/test_critical_scenarios.py`](backend/tests/test_critical_scenarios.py)
+**File**: [`backend/tests/test_critical_scenarios.py`](../backend/tests/test_critical_scenarios.py)
 
 | Test Name | Scenario Covered | Result |
 |-----------|-----------------|--------|
@@ -87,7 +87,7 @@ Run command: cd backend && pytest tests/ -v
 
 ### 2B. Playwright E2E Tests
 
-**Directory**: [`e2e/`](e2e/)
+**Directory**: [`e2e/`](../e2e/)
 
 | Test File | Scenario | Coverage |
 |-----------|----------|----------|
@@ -103,7 +103,7 @@ Run commands:
 
 ### 2C. Manual Test Plan
 
-**File**: [`docs/TEST_PLAN.md`](docs/TEST_PLAN.md)
+**File**: [`docs/TEST_PLAN.md`](TEST_PLAN.md)
 
 | Module | Test Cases | Coverage |
 |--------|-----------|---------|
@@ -119,7 +119,7 @@ Run commands:
 
 ## Tier 3A — Technical Specification: Todo Sharing (10 pts)
 
-**File**: [`docs/TODO_SHARING_SPEC.md`](docs/TODO_SHARING_SPEC.md)
+**File**: [`docs/TODO_SHARING_SPEC.md`](TODO_SHARING_SPEC.md)
 
 | Section | Content Delivered |
 |---------|------------------|
@@ -153,7 +153,7 @@ Run commands:
 
 ### Indexes Added
 
-**Migration**: [`c3d4e5f6a7b8_add_performance_indexes.py`](backend/alembic/versions/c3d4e5f6a7b8_add_performance_indexes.py)
+**Migration**: [`c3d4e5f6a7b8_add_performance_indexes.py`](../backend/alembic/versions/c3d4e5f6a7b8_add_performance_indexes.py)
 
 | Index Name | Columns | Query Optimized |
 |------------|---------|----------------|
