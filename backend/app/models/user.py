@@ -38,6 +38,11 @@ class User(Base):
         back_populates="user",
         lazy="select",
     )
+    tags: Mapped[list["Tag"]] = relationship(  # noqa: F821
+        "Tag",
+        back_populates="user",
+        lazy="select",
+    )
 
     def __repr__(self) -> str:
         return f"<User {self.email}>"
