@@ -3,7 +3,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import get_current_user, get_redis
 from app.core.redis import RedisClient
-from app.core.security import create_access_token, create_refresh_token, verify_token
+from app.core.security import (
+    create_access_token,
+    create_refresh_token,
+    verify_password,
+    verify_token,
+)
 from app.db.session import get_db
 from app.models.user import User
 from app.schemas.user import (
@@ -12,7 +17,7 @@ from app.schemas.user import (
     UserCreate,
     UserResponse,
 )
-from app.services.auth_service import create_user, get_user_by_email
+from app.services.auth_service import create_user, get_user_by_email, get_user_by_id
 
 router = APIRouter()
 
@@ -53,16 +58,15 @@ async def login(
 
     if not user:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="User with this email not found",
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid email or password",
         )
 
-    from app.core.security import verify_password
 
     if not verify_password(user_data.password, user.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect password",
+            detail="Invalid email or password",
         )
 
     access_token = create_access_token(data={"sub": str(user.id)})
@@ -90,6 +94,28 @@ async def refresh_token(
         )
 
     user_id = payload.get("sub")
+    if not user_id:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid refresh token",
+        )
+
+    import uuid as _uuid
+    try:
+        user_uuid = _uuid.UUID(user_id)
+    except ValueError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid refresh token",
+        )
+
+    user = await get_user_by_id(db, user_uuid)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="User no longer exists",
+        )
+
     access_token = create_access_token(data={"sub": user_id})
     refresh_token = create_refresh_token(data={"sub": user_id})
 
