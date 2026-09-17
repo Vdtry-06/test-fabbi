@@ -1,0 +1,41 @@
+﻿# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Test artifacts
+test.db
+*.db
+.pytest_cache/
+.coverage
+htmlcov/
+tests/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Git
+.git/
+.gitignore
+
+# Alembic local
+alembic/versions/*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
