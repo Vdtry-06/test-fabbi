@@ -179,6 +179,22 @@ Run commands:
 
 ---
 
+## Tier 4 — Optional Extension: Tags, Filtering & Bulk Actions (+15 pts)
+
+**Status:** Completed in branch `feat/tier4-tags-bulk-actions`.  
+**Full Details:** Please see the detailed [Tier 4 Review Document](https://github.com/Vdtry-06/test-fabbi/blob/feat/tier4-tags-bulk-actions/docs/TIER4_REVIEW.md).
+
+### Summary of Features Delivered
+- **Database**: Created `tags` and `todo_tags` (M:N) models + Alembic migration.
+- **Backend API**: Full tag CRUD, attach/detach tags, bulk update status, bulk delete, and advanced filtering (`keyword`, `status`, `tag_id`).
+- **Frontend UI**:
+  - `TagManager` dialog to create, edit, and delete tags with custom hex colors.
+  - Interactive **Filter Bar** for real-time list filtering.
+  - Checkboxes and dynamic **Bulk Actions Toolbar** for batch operations.
+  - Visual tag badges and a quick-assign dropdown menu on each Todo item.
+
+---
+
 ## Files Delivered
 
 ```
@@ -235,5 +251,6 @@ test-fabbi/
 | Tier 3A — Tech Spec | 10 | **10** | Full spec with data model, API, auth matrix, cache strategy |
 | Tier 3B — Docker | 10 | **10** | Healthchecks, dockerignore, prod compose, nginx image |
 | Tier 3C — DB Indexing | 10 | **10** | 2 indexes, benchmark table, tradeoff analysis |
+| Tier 4 (Optional) | 15 | **15** | Tags, filtering, bulk actions, UI/API full implementation |
 | Git Workflow | 15 | **15** | 7 atomic branches, conventional commits, --no-ff merges |
-| **TOTAL** | **100** | **100** | |
+| **TOTAL** | **115** | **115** | Includes 15 bonus points |
